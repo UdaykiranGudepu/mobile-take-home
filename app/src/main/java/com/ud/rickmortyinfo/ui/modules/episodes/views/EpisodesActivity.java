@@ -96,7 +96,7 @@ public class EpisodesActivity extends BaseActivity<ActivityRickymortyinfoBinding
     }
 
     private void loadFragment(Fragment fragment) {
-        Router.showFragment(this, fragment, getSupportFragmentManager(), R.id.episodes_container, true);
+        Router.showFragment(this, fragment, getSupportFragmentManager(), R.id.fragment_container, true);
     }
 
     @Override
