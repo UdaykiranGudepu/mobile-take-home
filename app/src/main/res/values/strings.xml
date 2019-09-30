@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RickMortyInfo</string>
+
+    <string name="generic_ok">OK</string>
+
+    <!-- RickyMorty -->
+    <string name="episode_number_txt"><![CDATA[<b>Episode:</b> %s]]></string>
+    <string name="episode_air_date_txt"><![CDATA[<b>Air Date:</b> %s]]></string>
+
+    <!-- Characters -->
+    <string name="episode_character_gender_txt"><![CDATA[<b>Gender:</b> %s]]></string>
+    <string name="episode_character_status_txt"><![CDATA[<b>Status:</b> %s]]></string>
+    <string name="episode_character_species_txt"><![CDATA[<b>Specie:</b> %s]]></string>
+    <string name="episode_character_origin_txt"><![CDATA[<b>Origin:</b> %s]]></string>
+    <string name="episode_character_location_txt"><![CDATA[<b>Location:</b> %s]]></string>
+    <string name="episode_character_kill">Kill</string>
+
+</resources>

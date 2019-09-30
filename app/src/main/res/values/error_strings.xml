@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_error_title">Error</string>
+    <string name="default_error_msg">Something went wrong. Please check back later.</string>
+
+    <string name="episodes_error">No Episodes found.</string>
+</resources>

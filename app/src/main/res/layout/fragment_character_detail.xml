@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.ud.rickmortyinfo.ui.modules.episodes.models.Characters" />
+
+        <variable
+            name="onKill"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onClose"
+            type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
+
+        <import type="com.ud.rickmortyinfo.ui.common.utils.Utils" />
+
+        <import type="com.ud.rickmortyinfo.ui.modules.episodes.models.Characters.Status" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/characterInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorRipple"
+        android:gravity="center_vertical"
+        android:animateLayoutChanges="true"
+        android:padding="@dimen/space_15"
+        tools:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/characterClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{onClose}"
+            android:padding="@dimen/space_5"
+            android:tint="@color/colorPrimary"
+            android:layout_marginEnd="@dimen/space_15"
+            android:layout_marginBottom="@dimen/space_5"
+            app:layout_constraintBottom_toTopOf="@+id/characterImage"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+
+        <ImageView
+            android:id="@+id/characterImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/characterStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginTop="@dimen/space_20"
+            bind:imageBitmap="@{character.bitmap}"
+            android:background="@drawable/ic_default_character" />
+
+        <TextView
+            android:id="@+id/characterStatus"
+            style="@style/Character_TextView_Details_Title"
+            app:layout_constraintTop_toBottomOf="@+id/characterImage"
+            app:layout_constraintStart_toStartOf="@+id/characterImage"
+            app:layout_constraintEnd_toEndOf="@+id/characterImage"
+            app:layout_constraintBottom_toTopOf="@+id/characterSpecie"
+            android:text="@{Utils.getSpannedHtml(@string/episode_character_status_txt(character.status))}"
+            tools:text="Alive" />
+
+
+        <TextView
+            android:id="@+id/characterSpecie"
+            style="@style/Character_TextView_Details_Title"
+            app:layout_constraintTop_toBottomOf="@+id/characterStatus"
+            app:layout_constraintStart_toStartOf="@+id/characterImage"
+            app:layout_constraintEnd_toEndOf="@+id/characterImage"
+            app:layout_constraintBottom_toTopOf="@+id/characterLocation"
+            android:text="@{Utils.getSpannedHtml(@string/episode_character_species_txt(character.species))}"
+            tools:text="Human" />
+
+        <TextView
+            android:id="@+id/characterLocation"
+            style="@style/Character_TextView_Details_Title"
+            app:layout_constraintTop_toBottomOf="@+id/characterSpecie"
+            app:layout_constraintStart_toStartOf="@+id/characterImage"
+            app:layout_constraintEnd_toEndOf="@+id/characterImage"
+            app:layout_constraintBottom_toTopOf="@+id/characterCreated"
+            android:text="@{Utils.getSpannedHtml(@string/episode_character_origin_txt(character.location))}"
+            tools:text="Earth (C-500A)" />
+
+        <TextView
+            android:id="@+id/characterCreated"
+            style="@style/Character_TextView_Details_Title"
+            app:layout_constraintTop_toBottomOf="@+id/characterLocation"
+            app:layout_constraintStart_toStartOf="@+id/characterImage"
+            app:layout_constraintEnd_toEndOf="@+id/characterImage"
+            app:layout_constraintBottom_toTopOf="@+id/characterKill"
+            android:text="@{Utils.getSpannedHtml(@string/episode_character_location_txt(character.formattedDate))}"
+            tools:text="Date" />
+
+
+        <Button
+            android:id="@+id/characterKill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{onKill}"
+            app:layout_constraintTop_toBottomOf="@+id/characterCreated"
+            android:visibility="@{(character.characterStatus == Status.ALIVE) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/episode_character_kill" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

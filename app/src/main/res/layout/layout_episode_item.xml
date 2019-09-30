@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="episode"
+            type="com.ud.rickmortyinfo.ui.modules.episodes.models.Episodes.Episode" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.ud.rickmortyinfo.ui.common.utils.Utils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{onClick}"
+        android:background="@drawable/recycler_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/space_20">
+
+        <TextView
+            android:id="@+id/episodeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@{episode.name}"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/colorColorText"
+            tools:text="Pilot" />
+
+        <TextView
+            android:id="@+id/episodeNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/episodeTitle"
+            app:layout_constraintStart_toStartOf="@+id/episodeTitle"
+            android:layout_marginTop="@dimen/space_15"
+            android:text="@{Utils.getSpannedHtml(@string/episode_number_txt(episode.episode))}"
+            android:textColor="@color/colorPrimary"
+            tools:text="Episode: S01E01" />
+
+        <TextView
+            android:id="@+id/episodeAirDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/episodeNumber"
+            app:layout_constraintStart_toStartOf="@+id/episodeTitle"
+            android:layout_marginTop="@dimen/space_5"
+            android:textColor="@color/colorPrimary"
+            android:text="@{Utils.getSpannedHtml(@string/episode_air_date_txt(episode.airDate))}"
+            tools:text="Air Date: December 2, 2013" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:src="@android:drawable/arrow_up_float"
+            android:tint="@color/colorPrimary"
+            android:layout_marginEnd="@dimen/space_15"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
